@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://hanans-store.com/</loc>
+    <loc>https://hanansstore.vercel.app/</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://hanans-store.com/categories</loc>
+    <loc>https://hanansstore.vercel.app/categories</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://hanans-store.com/cart</loc>
+    <loc>https://hanansstore.vercel.app/cart</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://hanans-store.com/checkout</loc>
+    <loc>https://hanansstore.vercel.app/checkout</loc>
     <lastmod>2026-03-23</lastmod>
     <changefreq>always</changefreq>
     <priority>0.5</priority>
