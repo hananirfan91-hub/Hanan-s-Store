@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hanansstore.vercel.app/sitemap.xml
+Sitemap: https://hanzor.vercel.app/sitemap.xml

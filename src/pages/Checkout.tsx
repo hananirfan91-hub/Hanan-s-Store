@@ -40,7 +40,7 @@ export const Checkout = () => {
     });
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbyQ6CwDksqYUgTVtq-5BrybqhpxEWsjeZrBrsLIgNJGPppp1TlRXU9GbIjtZSaSxJl81Q/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbyq6ZjHty5MVQZlMdPImdIdJfkm-ozhbHuQZjY6XXl2mHjK1hVq9xW5nIKVuXLR19QI/exec', {
         method: 'POST',
         body: formBody,
         mode: 'no-cors',

@@ -16,8 +16,8 @@ const InfoLayout = ({ title, children }: { title: string, children: React.ReactN
 
 export const About = () => (
   <InfoLayout title="About Us">
-    <p>Welcome to Hanan's Store. We are passionate about providing the best footwear for every occasion. Our journey started with a simple idea: to make premium shoes accessible to everyone.</p>
-    <p>We partner with top brands to ensure quality, comfort, and style.</p>
+    <p>Welcome to HANZOR. We are passionate about providing the best products for every need. Our journey started with a simple idea: to make online shopping in Pakistan accessible, reliable, and enjoyable for everyone.</p>
+    <p>We partner with top brands to ensure quality, value, and exceptional service.</p>
   </InfoLayout>
 );
 
@@ -44,7 +44,7 @@ export const Tracking = () => (
 
 export const Privacy = () => (
   <InfoLayout title="Privacy Policy">
-    <p>Your privacy is important to us. It is Hanan's Store's policy to respect your privacy regarding any information we may collect from you across our website.</p>
+    <p>Your privacy is important to us. It is HANZOR's policy to respect your privacy regarding any information we may collect from you across our website.</p>
     <p>We only ask for personal information when we truly need it to provide a service to you.</p>
   </InfoLayout>
 );
@@ -57,6 +57,6 @@ export const Terms = () => (
 
 export const Cookies = () => (
   <InfoLayout title="Cookie Policy">
-    <p>We use cookies to help improve your experience of our website. This cookie policy is part of Hanan's Store's privacy policy, and covers the use of cookies between your device and our site.</p>
+    <p>We use cookies to help improve your experience of our website. This cookie policy is part of HANZOR's privacy policy, and covers the use of cookies between your device and our site.</p>
   </InfoLayout>
 );

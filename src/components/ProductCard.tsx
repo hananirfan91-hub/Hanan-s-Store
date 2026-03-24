@@ -38,10 +38,14 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
         <img
-          src={product.image}
+          src={product.image || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop'}
           alt={product.name}
           className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700"
           loading="lazy"
+          referrerPolicy="no-referrer"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop';
+          }}
         />
         <button
           onClick={toggleWishlist}

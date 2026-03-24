@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, ShieldCheck, Truck, ChevronUp, ChevronDown } from 'lucide-react';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import { ProductCard } from '../components/ProductCard';
 import { ProductsByCategory } from '../components/ProductsByCategory';
 import { motion, AnimatePresence } from 'motion/react';
@@ -9,6 +9,7 @@ import { useLanguage } from '../context/LanguageContext';
 
 export const Home = () => {
   const { t } = useLanguage();
+  const { products, loading } = useProducts();
   const featuredProducts = products.slice(0, 4);
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -230,14 +231,20 @@ export const Home = () => {
               animation-play-state: paused;
             }
           `}</style>
-          <div className="flex gap-8 w-max animate-slide px-4 sm:px-6 lg:px-8">
-            {/* Duplicate products to create a seamless loop */}
-            {[...products.slice(0, 8), ...products.slice(0, 8)].map((product, index) => (
-              <div key={`${product.id}-${index}`} className="w-[280px] sm:w-[320px] shrink-0">
-                <ProductCard product={product} index={index} />
-              </div>
-            ))}
-          </div>
+          {loading ? (
+            <div className="flex justify-center py-12">
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+            </div>
+          ) : (
+            <div className="flex gap-8 w-max animate-slide px-4 sm:px-6 lg:px-8">
+              {/* Duplicate products to create a seamless loop */}
+              {[...products.slice(0, 8), ...products.slice(0, 8)].map((product, index) => (
+                <div key={`${product.id}-${index}`} className="w-[280px] sm:w-[320px] shrink-0">
+                  <ProductCard product={product} index={index} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 

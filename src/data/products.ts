@@ -14,18 +14,18 @@ export const products: Product[] = [
   {
     id: '1',
     name: 'Air Max Pulse',
-    price: 15000,
+    price: 2500,
     image: images[0],
     category: 'Running',
     description: 'Experience the next generation of Air technology with the Air Max Pulse.',
     isSale: true,
-    salePrice: 12000,
+    salePrice: 2000,
     sizes: defaultSizes
   },
   {
     id: '2',
     name: 'Ultraboost Light',
-    price: 19000,
+    price: 2800,
     image: images[1],
     category: 'Running',
     description: 'Our lightest Ultraboost ever, designed for ultimate energy return.',
@@ -35,18 +35,18 @@ export const products: Product[] = [
   {
     id: '3',
     name: 'Classic Leather',
-    price: 8500,
+    price: 1500,
     image: images[2],
     category: 'Casual',
     description: 'Timeless style meets everyday comfort in these classic leather sneakers.',
     isSale: true,
-    salePrice: 6500,
+    salePrice: 1200,
     sizes: defaultSizes
   },
   {
     id: '4',
     name: 'ZoomX Vaporfly',
-    price: 25000,
+    price: 3000,
     image: images[3],
     category: 'Running',
     description: 'Break your personal best with our fastest racing shoe yet.',
@@ -56,18 +56,18 @@ export const products: Product[] = [
   {
     id: '5',
     name: 'Dunk Low Retro',
-    price: 11000,
+    price: 1800,
     image: images[4],
     category: 'Lifestyle',
     description: 'The iconic hoops shoe returns with classic details and throwback hoops flair.',
     isSale: true,
-    salePrice: 9000,
+    salePrice: 1500,
     sizes: defaultSizes
   },
   {
     id: '6',
     name: 'Gel-Kayano 30',
-    price: 16000,
+    price: 2400,
     image: images[5],
     category: 'Running',
     description: 'Advanced support and unmatched comfort for your longest runs.',
@@ -76,7 +76,7 @@ export const products: Product[] = [
   {
     id: '7',
     name: 'Chuck Taylor All Star',
-    price: 6500,
+    price: 1200,
     image: images[0],
     category: 'Casual',
     description: 'The undisputed classic, ready to be styled your way.',
@@ -85,7 +85,7 @@ export const products: Product[] = [
   {
     id: '8',
     name: 'Air Force 1',
-    price: 11500,
+    price: 1900,
     image: images[1],
     category: 'Lifestyle',
     description: 'The legend lives on in the Air Force 1, a modern take on the iconic AF1.',
@@ -95,7 +95,7 @@ export const products: Product[] = [
   {
     id: '9',
     name: 'NMD_R1',
-    price: 15000,
+    price: 2200,
     image: images[2],
     category: 'Lifestyle',
     description: 'Pack light, move fast. These NMD shoes are built for the urban nomad.',
@@ -104,18 +104,18 @@ export const products: Product[] = [
   {
     id: '10',
     name: 'Pegasus 40',
-    price: 13000,
+    price: 2100,
     image: images[3],
     category: 'Running',
     description: 'A springy ride for every run, the Peg\'s familiar, just-for-you feel returns.',
     isSale: true,
-    salePrice: 11000,
+    salePrice: 1800,
     sizes: defaultSizes
   },
   {
     id: '11',
     name: 'Stan Smith',
-    price: 10000,
+    price: 1600,
     image: images[4],
     category: 'Casual',
     description: 'Clean and minimalist, the Stan Smith has been a style staple for decades.',
@@ -124,7 +124,7 @@ export const products: Product[] = [
   {
     id: '12',
     name: 'Blazer Mid 77',
-    price: 10500,
+    price: 1700,
     image: images[5],
     category: 'Lifestyle',
     description: 'Vintage style meets modern comfort in this classic hoops silhouette.',
@@ -133,7 +133,7 @@ export const products: Product[] = [
   {
     id: '13',
     name: 'Fresh Foam X',
-    price: 14000,
+    price: 2300,
     image: images[0],
     category: 'Running',
     description: 'Plush comfort and smooth transitions for miles of effortless running.',
@@ -142,7 +142,7 @@ export const products: Product[] = [
   {
     id: '14',
     name: 'Old Skool',
-    price: 7000,
+    price: 1300,
     image: images[1],
     category: 'Skate',
     description: 'The classic skate shoe that brought the iconic side stripe to the world.',
@@ -151,7 +151,7 @@ export const products: Product[] = [
   {
     id: '15',
     name: 'Air Jordan 1 High',
-    price: 18000,
+    price: 2900,
     image: images[2],
     category: 'Basketball',
     description: 'The shoe that started it all. Premium materials and classic styling.',
@@ -161,7 +161,7 @@ export const products: Product[] = [
   {
     id: '16',
     name: 'Yeezy Boost 350',
-    price: 22000,
+    price: 3000,
     image: images[3],
     category: 'Lifestyle',
     description: 'Iconic design meets unparalleled comfort in this modern classic.',
@@ -171,18 +171,18 @@ export const products: Product[] = [
   {
     id: '17',
     name: 'Zoom Fly 5',
-    price: 16000,
+    price: 2600,
     image: images[4],
     category: 'Running',
     description: 'Bridge the gap between your weekend training run and race day.',
     isSale: true,
-    salePrice: 13500,
+    salePrice: 2100,
     sizes: defaultSizes
   },
   {
     id: '18',
     name: 'Air Max 90',
-    price: 12000,
+    price: 2000,
     image: images[5],
     category: 'Casual',
     description: 'Lace up and feel the legacy. Produced at the intersection of art, music and culture.',
@@ -191,18 +191,18 @@ export const products: Product[] = [
   {
     id: '19',
     name: 'Superstar',
-    price: 9000,
+    price: 1400,
     image: images[0],
     category: 'Casual',
     description: 'The adidas Superstar shoe is a lifestyle staple for streetwear enthusiasts.',
     isSale: true,
-    salePrice: 7500,
+    salePrice: 1100,
     sizes: defaultSizes
   },
   {
     id: '20',
     name: 'Air Jordan 4 Retro',
-    price: 21000,
+    price: 2900,
     image: images[1],
     category: 'Basketball',
     description: 'A legendary silhouette returns with premium materials and classic color blocking.',
@@ -212,7 +212,7 @@ export const products: Product[] = [
   {
     id: '21',
     name: 'Gel-Nimbus 25',
-    price: 16000,
+    price: 2500,
     image: images[2],
     category: 'Running',
     description: 'Experience the softest cushioning properties yet in this premium running shoe.',
@@ -221,18 +221,18 @@ export const products: Product[] = [
   {
     id: '22',
     name: 'Classic Slip-On',
-    price: 6000,
+    price: 1100,
     image: images[3],
     category: 'Skate',
     description: 'The iconic slip-on that needs no introduction. Easy to wear, easy to style.',
     isSale: true,
-    salePrice: 4500,
+    salePrice: 1000,
     sizes: defaultSizes
   },
   {
     id: '23',
     name: 'Air Max 97',
-    price: 17000,
+    price: 2700,
     image: images[4],
     category: 'Lifestyle',
     description: 'Keep your style going full speed ahead with the iconic ripple design.',
@@ -242,7 +242,7 @@ export const products: Product[] = [
   {
     id: '24',
     name: 'Club C 85',
-    price: 8000,
+    price: 1300,
     image: images[5],
     category: 'Casual',
     description: 'A clean, minimalist tennis-inspired shoe that never goes out of style.',

@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { ShoppingCart, Menu, X, Store, Facebook, Instagram, ChevronDown, Heart, Search } from 'lucide-react';
+import { ShoppingCart, Menu, X, Facebook, Instagram, ChevronDown, Heart, Search, User, LogOut, Shield } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
 import { useLanguage } from '../context/LanguageContext';
+import { useAuth } from '../context/AuthContext';
 import { motion, AnimatePresence } from 'motion/react';
 
 export const Header = () => {
   const { totalItems } = useCart();
   const { totalWishlistItems } = useWishlist();
   const { language, setLanguage, t } = useLanguage();
+  const { currentUser, isAdmin, logout } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const location = useLocation();
@@ -69,12 +71,32 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="bg-indigo-600 p-2 rounded-lg group-hover:bg-indigo-700 transition-colors">
-              <Store className="w-6 h-6 text-white" />
+          <Link to="/" className="flex items-center gap-3 group">
+            <div className="flex items-center justify-center">
+              <svg width="36" height="36" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform group-hover:scale-105 transition-transform duration-300">
+                <path d="M8 8L14 5V16L8 19V8Z" fill="url(#gold-light)" />
+                <path d="M24 8L18 11V22L24 19V8Z" fill="url(#gold-dark)" />
+                <path d="M8 19L14 22V27L8 24V19Z" fill="url(#gold-dark)" />
+                <path d="M24 19L18 16V11L24 14V19Z" fill="url(#gold-light)" />
+                <path d="M14 16L18 14L18 22L14 24V16Z" fill="url(#gold-mid)" />
+                <defs>
+                  <linearGradient id="gold-light" x1="8" y1="5" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FDE047" />
+                    <stop offset="1" stopColor="#D97706" />
+                  </linearGradient>
+                  <linearGradient id="gold-mid" x1="8" y1="5" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#F59E0B" />
+                    <stop offset="1" stopColor="#B45309" />
+                  </linearGradient>
+                  <linearGradient id="gold-dark" x1="8" y1="5" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#D97706" />
+                    <stop offset="1" stopColor="#78350F" />
+                  </linearGradient>
+                </defs>
+              </svg>
             </div>
-            <span className="font-bold text-xl tracking-tight text-gray-900">
-              Hanan's<span className="text-indigo-600">Store</span>
+            <span className="font-bold text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 uppercase">
+              HANZOR
             </span>
           </Link>
 
@@ -146,6 +168,35 @@ export const Header = () => {
               </AnimatePresence>
             </Link>
 
+            {currentUser ? (
+              <div className="hidden md:flex items-center space-x-2">
+                {isAdmin && (
+                  <Link
+                    to="/admin"
+                    className="p-2 text-gray-600 hover:text-indigo-600 transition-colors"
+                    aria-label="Admin Dashboard"
+                  >
+                    <Shield className="w-6 h-6" />
+                  </Link>
+                )}
+                <button
+                  onClick={() => logout()}
+                  className="p-2 text-gray-600 hover:text-indigo-600 transition-colors"
+                  aria-label="Logout"
+                >
+                  <LogOut className="w-6 h-6" />
+                </button>
+              </div>
+            ) : (
+              <Link
+                to="/login"
+                className="hidden md:flex p-2 text-gray-600 hover:text-indigo-600 transition-colors"
+                aria-label="Login"
+              >
+                <User className="w-6 h-6" />
+              </Link>
+            )}
+
             <button
               className="md:hidden p-2 text-gray-600 hover:text-indigo-600 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
@@ -192,6 +243,45 @@ export const Header = () => {
                     {link.name}
                   </Link>
                 ))}
+                
+                {currentUser ? (
+                  <>
+                    {isAdmin && (
+                      <Link
+                        to="/admin"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className={`block px-3 py-2 rounded-md text-base font-medium ${
+                          isActive('/admin')
+                            ? 'bg-indigo-50 text-indigo-600'
+                            : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600'
+                        }`}
+                      >
+                        Admin Dashboard
+                      </Link>
+                    )}
+                    <button
+                      onClick={() => {
+                        logout();
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-indigo-600"
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <Link
+                    to="/login"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`block px-3 py-2 rounded-md text-base font-medium ${
+                      isActive('/login')
+                        ? 'bg-indigo-50 text-indigo-600'
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-indigo-600'
+                    }`}
+                  >
+                    Login
+                  </Link>
+                )}
               </div>
             </div>
           </motion.div>

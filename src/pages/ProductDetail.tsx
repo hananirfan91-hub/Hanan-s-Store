@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import { useCart } from '../context/CartContext';
 import { motion } from 'motion/react';
 import { ShoppingCart, ArrowLeft, ShieldCheck, Truck, RotateCcw } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
+import { ProductReviews } from '../components/ProductReviews';
 
 export const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { products, loading } = useProducts();
   const { addToCart } = useCart();
   const [selectedSize, setSelectedSize] = useState<number | null>(null);
   const [showSizeError, setShowSizeError] = useState(false);
@@ -21,6 +23,14 @@ export const ProductDetail = () => {
     setSelectedSize(null);
     setShowSizeError(false);
   }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-[70vh] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -54,9 +64,13 @@ export const ProductDetail = () => {
             className="relative aspect-square rounded-3xl overflow-hidden bg-gray-100"
           >
             <img 
-              src={product.image} 
+              src={product.image || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop'} 
               alt={product.name} 
               className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop';
+              }}
             />
             <div className="absolute top-4 left-4 flex flex-col gap-2">
               <span className="px-4 py-1.5 text-sm font-bold tracking-wider text-indigo-700 uppercase bg-indigo-50/90 backdrop-blur-sm rounded-full w-fit">
@@ -99,7 +113,7 @@ export const ProductDetail = () => {
             {product.sizes && product.sizes.length > 0 && (
               <div className="mb-8">
                 <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Select Size (UK)</h3>
+                  <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Select Size/Option</h3>
                 </div>
                 <div className="flex flex-wrap gap-3">
                   {product.sizes.map((size) => (
@@ -121,7 +135,7 @@ export const ProductDetail = () => {
                 </div>
                 {showSizeError && (
                   <p className="text-red-500 text-sm font-medium mt-3 flex items-center gap-1">
-                    Please select a size before adding to cart.
+                    Please select an option before adding to cart.
                   </p>
                 )}
               </div>
@@ -154,9 +168,12 @@ export const ProductDetail = () => {
           </motion.div>
         </div>
 
+        {/* Product Reviews */}
+        <ProductReviews productId={product.id} />
+
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div className="border-t border-gray-100 pt-16">
+          <div className="border-t border-gray-100 pt-16 mt-16">
             <h2 className="text-3xl font-bold text-gray-900 mb-8">You Might Also Like</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {relatedProducts.map((relatedProduct, index) => (

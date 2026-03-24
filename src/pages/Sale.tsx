@@ -1,9 +1,10 @@
 import React from 'react';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import { ProductCard } from '../components/ProductCard';
 import { motion } from 'motion/react';
 
 export const Sale = () => {
+  const { products, loading } = useProducts();
   const saleProducts = products.filter(p => p.isSale);
 
   return (
@@ -13,11 +14,17 @@ export const Sale = () => {
           <h1 className="text-4xl md:text-5xl font-extrabold text-red-600 mb-6 tracking-tight">Special Offers</h1>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">Grab your favorite pairs at unbeatable prices. Limited time only.</p>
         </motion.div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-          {saleProducts.map((product, index) => (
-            <ProductCard key={product.id} product={product} index={index} />
-          ))}
-        </div>
+        {loading ? (
+          <div className="flex justify-center py-24">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            {saleProducts.map((product, index) => (
+              <ProductCard key={product.id} product={product} index={index} />
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );

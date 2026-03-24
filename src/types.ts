@@ -15,3 +15,13 @@ export interface CartItem extends Product {
   quantity: number;
   selectedSize?: number;
 }
+
+export interface Review {
+  id: string;
+  productId: string;
+  userId: string;
+  userEmail: string;
+  rating: number;
+  comment: string;
+  createdAt: string;
+}

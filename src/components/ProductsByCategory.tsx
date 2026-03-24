@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import { products } from '../data/products';
+import { useProducts } from '../context/ProductContext';
 import { ProductCard } from './ProductCard';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 
 export const ProductsByCategory = () => {
   const { t } = useLanguage();
+  const { products, loading } = useProducts();
   const categories = ['all', ...Array.from(new Set(products.map(p => p.category)))];
   const [activeCategory, setActiveCategory] = useState('all');
 
@@ -31,25 +32,31 @@ export const ProductsByCategory = () => {
         ))}
       </div>
 
-      <motion.div 
-        layout
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
-      >
-        <AnimatePresence mode="popLayout">
-          {filteredProducts.map((product, index) => (
-            <motion.div
-              key={product.id}
-              layout
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              transition={{ duration: 0.3 }}
-            >
-              <ProductCard product={product} index={index} />
-            </motion.div>
-          ))}
-        </AnimatePresence>
-      </motion.div>
+      {loading ? (
+        <div className="flex justify-center py-12">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        </div>
+      ) : (
+        <motion.div 
+          layout
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          <AnimatePresence mode="popLayout">
+            {filteredProducts.map((product, index) => (
+              <motion.div
+                key={product.id}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ProductCard product={product} index={index} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </motion.div>
+      )}
     </div>
   );
 };

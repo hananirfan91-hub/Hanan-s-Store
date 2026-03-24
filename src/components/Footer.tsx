@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Store, Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
+import { Facebook, Twitter, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 
 export const Footer = () => {
   return (
@@ -9,16 +9,36 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <Link to="/" className="flex items-center gap-2 group">
-              <div className="bg-indigo-600 p-2 rounded-lg group-hover:bg-indigo-500 transition-colors">
-                <Store className="w-6 h-6 text-white" />
+            <Link to="/" className="flex items-center gap-3 group">
+              <div className="flex items-center justify-center">
+                <svg width="36" height="36" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="transform group-hover:scale-105 transition-transform duration-300">
+                  <path d="M8 8L14 5V16L8 19V8Z" fill="url(#gold-light-footer)" />
+                  <path d="M24 8L18 11V22L24 19V8Z" fill="url(#gold-dark-footer)" />
+                  <path d="M8 19L14 22V27L8 24V19Z" fill="url(#gold-dark-footer)" />
+                  <path d="M24 19L18 16V11L24 14V19Z" fill="url(#gold-light-footer)" />
+                  <path d="M14 16L18 14L18 22L14 24V16Z" fill="url(#gold-mid-footer)" />
+                  <defs>
+                    <linearGradient id="gold-light-footer" x1="8" y1="5" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#FDE047" />
+                      <stop offset="1" stopColor="#D97706" />
+                    </linearGradient>
+                    <linearGradient id="gold-mid-footer" x1="8" y1="5" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#F59E0B" />
+                      <stop offset="1" stopColor="#B45309" />
+                    </linearGradient>
+                    <linearGradient id="gold-dark-footer" x1="8" y1="5" x2="24" y2="27" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#D97706" />
+                      <stop offset="1" stopColor="#78350F" />
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
-              <span className="font-bold text-xl tracking-tight text-white">
-                Hanan's<span className="text-indigo-400">Store</span>
+              <span className="font-bold text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 uppercase">
+                HANZOR
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Your ultimate destination for premium footwear. We bring you the latest trends and timeless classics, all with exceptional comfort and style.
+              Your ultimate destination for online shopping in Pakistan. We bring you the latest trends, electronics, and home essentials with exceptional quality and service.
             </p>
             <div className="flex gap-4 pt-2">
               <a href="https://facebook.com/HananIrfan001" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
@@ -105,7 +125,7 @@ export const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} Hanan's Store. All rights reserved.
+            &copy; {new Date().getFullYear()} HANZOR. All rights reserved.
           </p>
           <div className="flex gap-4 text-sm text-gray-500">
             <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
