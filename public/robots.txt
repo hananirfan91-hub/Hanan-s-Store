@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://hanzor.vercel.app/sitemap.xml
+Sitemap: https://hanzorstore.vercel.app/sitemap.xml
