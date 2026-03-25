@@ -1,251 +1,156 @@
 import { Product } from '../types';
 
-const defaultSizes = [6, 7, 8, 9, 10, 11, 12];
 const images = [
-  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1608231387042-66d1773070a5?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1551107696-a4b0c5a0d9a2?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800&q=80',
-  'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=800&q=80'
+  'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&w=800&q=80', // iPhone
+  'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=80', // T-shirt
+  'https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80', // Leather Jacket
+  'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80', // Shoes
+  'https://images.unsplash.com/photo-1524592094714-0f0654e20314?auto=format&fit=crop&w=800&q=80', // Watch
+  'https://images.unsplash.com/photo-1596755094514-f87e32f85e2c?auto=format&fit=crop&w=800&q=80', // Casual Shirt
+  'https://images.unsplash.com/photo-1611312449408-fcece27cdbb7?auto=format&fit=crop&w=800&q=80', // Denim Jacket
+  'https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=800&q=80', // Formal Shoes
+  'https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=800&q=80', // Smartwatch
+  'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80', // Headphones
+  'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800&q=80', // Pants 1
+  'https://images.unsplash.com/photo-1584865288642-42078afe6942?auto=format&fit=crop&w=800&q=80', // Airpods
+  'https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=800&q=80', // Shirts 2
+  'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?auto=format&fit=crop&w=800&q=80', // Pants 2
 ];
 
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Air Max Pulse',
-    price: 2500,
+    name: 'Smartphone Pro Max',
+    price: 250000,
     image: images[0],
-    category: 'Running',
-    description: 'Experience the next generation of Air technology with the Air Max Pulse.',
+    category: 'Electronics',
+    description: 'Experience the next generation of smartphones with the Pro Max.',
     isSale: true,
-    salePrice: 2000,
-    sizes: defaultSizes
+    salePrice: 240000,
   },
   {
     id: '2',
-    name: 'Ultraboost Light',
+    name: 'Classic Cotton T-Shirt',
     price: 2800,
     image: images[1],
-    category: 'Running',
-    description: 'Our lightest Ultraboost ever, designed for ultimate energy return.',
+    category: 'Shirts',
+    description: 'Our lightest cotton t-shirt ever, designed for ultimate comfort.',
     isNewArrival: true,
-    sizes: defaultSizes
+    sizes: [38, 40, 42, 44]
   },
   {
     id: '3',
-    name: 'Classic Leather',
-    price: 1500,
+    name: 'Premium Leather Jacket',
+    price: 15000,
     image: images[2],
-    category: 'Casual',
-    description: 'Timeless style meets everyday comfort in these classic leather sneakers.',
+    category: 'Clothes',
+    description: 'Timeless style meets everyday utility in this classic leather jacket.',
     isSale: true,
-    salePrice: 1200,
-    sizes: defaultSizes
+    salePrice: 12000,
+    sizes: [38, 40, 42]
   },
   {
     id: '4',
-    name: 'ZoomX Vaporfly',
-    price: 3000,
+    name: 'Sport Running Shoes',
+    price: 8000,
     image: images[3],
-    category: 'Running',
-    description: 'Break your personal best with our fastest racing shoe yet.',
+    category: 'Shoes',
+    description: 'Rejuvenate your run with our premium lightweight running shoes.',
     isNewArrival: true,
-    sizes: defaultSizes
+    sizes: [7, 8, 9, 10, 11]
   },
   {
     id: '5',
-    name: 'Dunk Low Retro',
-    price: 1800,
+    name: 'Luxury Chronograph Watch',
+    price: 18000,
     image: images[4],
-    category: 'Lifestyle',
-    description: 'The iconic hoops shoe returns with classic details and throwback hoops flair.',
+    category: 'Watches',
+    description: 'The iconic watch returns with classic details and throwback flair.',
     isSale: true,
-    salePrice: 1500,
-    sizes: defaultSizes
+    salePrice: 15000,
   },
   {
     id: '6',
-    name: 'Gel-Kayano 30',
-    price: 2400,
+    name: 'Casual Oxford Shirt',
+    price: 4500,
     image: images[5],
-    category: 'Running',
-    description: 'Advanced support and unmatched comfort for your longest runs.',
-    sizes: defaultSizes
+    category: 'Shirts',
+    description: 'Advanced support and unmatched comfort for your daily wear.',
+    sizes: [38, 40, 42, 44]
   },
   {
     id: '7',
-    name: 'Chuck Taylor All Star',
-    price: 1200,
-    image: images[0],
-    category: 'Casual',
-    description: 'The undisputed classic, ready to be styled your way.',
-    sizes: defaultSizes
+    name: 'Vintage Denim Jacket',
+    price: 12000,
+    image: images[6],
+    category: 'Clothes',
+    description: 'The undisputed classic denim jacket, ready to be styled your way.',
+    sizes: [38, 40, 42]
   },
   {
     id: '8',
-    name: 'Air Force 1',
-    price: 1900,
-    image: images[1],
-    category: 'Lifestyle',
-    description: 'The legend lives on in the Air Force 1, a modern take on the iconic AF1.',
+    name: 'Formal Leather Shoes',
+    price: 14000,
+    image: images[7],
+    category: 'Shoes',
+    description: 'The legend lives on in these formal shoes, a modern take on iconic style.',
     isNewArrival: true,
-    sizes: defaultSizes
+    sizes: [7, 8, 9, 10, 11]
   },
   {
     id: '9',
-    name: 'NMD_R1',
-    price: 2200,
-    image: images[2],
-    category: 'Lifestyle',
-    description: 'Pack light, move fast. These NMD shoes are built for the urban nomad.',
-    sizes: defaultSizes
+    name: 'Advanced Smartwatch',
+    price: 22000,
+    image: images[8],
+    category: 'Watches',
+    description: 'A perfect blend of heritage style and modern smart features.',
   },
   {
     id: '10',
-    name: 'Pegasus 40',
-    price: 2100,
-    image: images[3],
-    category: 'Running',
-    description: 'A springy ride for every run, the Peg\'s familiar, just-for-you feel returns.',
+    name: 'Wireless Noise-Cancelling Headphones',
+    price: 35000,
+    image: images[9],
+    category: 'Electronics',
+    description: 'Take your music anywhere with these premium headphones.',
     isSale: true,
-    salePrice: 1800,
-    sizes: defaultSizes
+    salePrice: 30000,
   },
   {
     id: '11',
-    name: 'Stan Smith',
-    price: 1600,
-    image: images[4],
-    category: 'Casual',
-    description: 'Clean and minimalist, the Stan Smith has been a style staple for decades.',
-    sizes: defaultSizes
+    name: 'Slim Fit Chino Pants',
+    price: 5500,
+    image: images[10],
+    category: 'Pants',
+    description: 'Versatile and comfortable chino pants for any occasion.',
+    sizes: [30, 32, 34, 36]
   },
   {
     id: '12',
-    name: 'Blazer Mid 77',
-    price: 1700,
-    image: images[5],
-    category: 'Lifestyle',
-    description: 'Vintage style meets modern comfort in this classic hoops silhouette.',
-    sizes: defaultSizes
+    name: 'Pro Wireless Airpods',
+    price: 45000,
+    image: images[11],
+    category: 'Airpods',
+    description: 'Immersive sound and seamless connectivity with our pro airpods.',
+    isNewArrival: true,
   },
   {
     id: '13',
-    name: 'Fresh Foam X',
-    price: 2300,
-    image: images[0],
-    category: 'Running',
-    description: 'Plush comfort and smooth transitions for miles of effortless running.',
-    sizes: defaultSizes
+    name: 'Printed Summer Shirt',
+    price: 3200,
+    image: images[12],
+    category: 'Shirts',
+    description: 'Stay cool and stylish with this breathable summer shirt.',
+    sizes: [38, 40, 42, 44]
   },
   {
     id: '14',
-    name: 'Old Skool',
-    price: 1300,
-    image: images[1],
-    category: 'Skate',
-    description: 'The classic skate shoe that brought the iconic side stripe to the world.',
-    sizes: defaultSizes
-  },
-  {
-    id: '15',
-    name: 'Air Jordan 1 High',
-    price: 2900,
-    image: images[2],
-    category: 'Basketball',
-    description: 'The shoe that started it all. Premium materials and classic styling.',
-    isNewArrival: true,
-    sizes: defaultSizes
-  },
-  {
-    id: '16',
-    name: 'Yeezy Boost 350',
-    price: 3000,
-    image: images[3],
-    category: 'Lifestyle',
-    description: 'Iconic design meets unparalleled comfort in this modern classic.',
-    isNewArrival: true,
-    sizes: defaultSizes
-  },
-  {
-    id: '17',
-    name: 'Zoom Fly 5',
-    price: 2600,
-    image: images[4],
-    category: 'Running',
-    description: 'Bridge the gap between your weekend training run and race day.',
+    name: 'Classic Denim Pants',
+    price: 6000,
+    image: images[13],
+    category: 'Pants',
+    description: 'Durable and timeless denim pants that never go out of style.',
     isSale: true,
-    salePrice: 2100,
-    sizes: defaultSizes
-  },
-  {
-    id: '18',
-    name: 'Air Max 90',
-    price: 2000,
-    image: images[5],
-    category: 'Casual',
-    description: 'Lace up and feel the legacy. Produced at the intersection of art, music and culture.',
-    sizes: defaultSizes
-  },
-  {
-    id: '19',
-    name: 'Superstar',
-    price: 1400,
-    image: images[0],
-    category: 'Casual',
-    description: 'The adidas Superstar shoe is a lifestyle staple for streetwear enthusiasts.',
-    isSale: true,
-    salePrice: 1100,
-    sizes: defaultSizes
-  },
-  {
-    id: '20',
-    name: 'Air Jordan 4 Retro',
-    price: 2900,
-    image: images[1],
-    category: 'Basketball',
-    description: 'A legendary silhouette returns with premium materials and classic color blocking.',
-    isNewArrival: true,
-    sizes: defaultSizes
-  },
-  {
-    id: '21',
-    name: 'Gel-Nimbus 25',
-    price: 2500,
-    image: images[2],
-    category: 'Running',
-    description: 'Experience the softest cushioning properties yet in this premium running shoe.',
-    sizes: defaultSizes
-  },
-  {
-    id: '22',
-    name: 'Classic Slip-On',
-    price: 1100,
-    image: images[3],
-    category: 'Skate',
-    description: 'The iconic slip-on that needs no introduction. Easy to wear, easy to style.',
-    isSale: true,
-    salePrice: 1000,
-    sizes: defaultSizes
-  },
-  {
-    id: '23',
-    name: 'Air Max 97',
-    price: 2700,
-    image: images[4],
-    category: 'Lifestyle',
-    description: 'Keep your style going full speed ahead with the iconic ripple design.',
-    isNewArrival: true,
-    sizes: defaultSizes
-  },
-  {
-    id: '24',
-    name: 'Club C 85',
-    price: 1300,
-    image: images[5],
-    category: 'Casual',
-    description: 'A clean, minimalist tennis-inspired shoe that never goes out of style.',
-    sizes: defaultSizes
+    salePrice: 5000,
+    sizes: [30, 32, 34, 36, 38]
   }
 ];

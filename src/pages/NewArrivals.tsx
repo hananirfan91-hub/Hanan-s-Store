@@ -2,6 +2,7 @@ import React from 'react';
 import { useProducts } from '../context/ProductContext';
 import { ProductCard } from '../components/ProductCard';
 import { motion } from 'motion/react';
+import { AdBanner } from '../components/AdBanner';
 
 export const NewArrivals = () => {
   const { products, loading } = useProducts();
@@ -14,17 +15,26 @@ export const NewArrivals = () => {
           <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">New Arrivals</h1>
           <p className="text-lg text-gray-500 max-w-2xl mx-auto">Fresh drops and latest styles. Be the first to step out in these.</p>
         </motion.div>
-        {loading ? (
-          <div className="flex justify-center py-24">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="flex-grow order-2 lg:order-1">
+            {loading ? (
+              <div className="flex justify-center py-24">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {newProducts.map((product, index) => (
+                  <ProductCard key={product.id} product={product} index={index} />
+                ))}
+              </div>
+            )}
           </div>
-        ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {newProducts.map((product, index) => (
-              <ProductCard key={product.id} product={product} index={index} />
-            ))}
+          
+          <div className="w-full lg:w-1/4 shrink-0 order-1 lg:order-2">
+            <AdBanner />
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

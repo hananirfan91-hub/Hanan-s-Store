@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Trash2, Plus, Minus, ArrowRight, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { motion, AnimatePresence } from 'motion/react';
+import { AdBanner } from '../components/AdBanner';
 
 export const Cart = () => {
   const { items, removeFromCart, updateQuantity, totalPrice } = useCart();
@@ -20,7 +21,7 @@ export const Cart = () => {
           </div>
           <h2 className="text-3xl font-bold text-gray-900 mb-4 tracking-tight">Your cart is empty</h2>
           <p className="text-gray-500 mb-8 leading-relaxed">
-            Looks like you haven't added anything to your cart yet. Discover our latest collection and find your perfect pair.
+            Looks like you haven't added anything to your cart yet. Discover our latest collection and find your perfect item.
           </p>
           <Link
             to="/categories"
@@ -66,7 +67,7 @@ export const Cart = () => {
                         <h3 className="text-lg font-bold text-gray-900 mb-1">{item.name}</h3>
                         <p className="text-sm text-gray-500 font-medium">{item.category}</p>
                         {item.selectedSize && (
-                          <p className="text-sm text-indigo-600 font-semibold mt-1">Size: UK {item.selectedSize}</p>
+                          <p className="text-sm text-indigo-600 font-semibold mt-1">Size: {item.selectedSize}</p>
                         )}
                       </div>
                       <div className="text-right">
@@ -155,6 +156,9 @@ export const Cart = () => {
                   Continue Shopping
                 </Link>
               </div>
+            </div>
+            <div className="mt-8">
+              <AdBanner />
             </div>
           </div>
         </div>

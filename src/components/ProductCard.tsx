@@ -98,7 +98,7 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
         
         {product.sizes && product.sizes.length > 0 && (
           <div className="mb-4">
-            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Sizes (UK)</p>
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Options</p>
             <div className="flex flex-wrap gap-1.5">
               {product.sizes.slice(0, 5).map(size => (
                 <span key={size} className="text-xs font-medium text-gray-600 bg-gray-100 px-2 py-1 rounded-md">
@@ -119,7 +119,7 @@ export const ProductCard = ({ product, index = 0 }: ProductCardProps) => {
             to={`/product/${product.id}`}
             className="flex-1 flex items-center justify-center py-3 px-4 bg-gray-100 text-gray-900 rounded-xl font-medium hover:bg-gray-200 active:scale-[0.98] transition-all duration-200"
           >
-            View Detail
+            Buy Now
           </Link>
           <button
             onClick={() => {

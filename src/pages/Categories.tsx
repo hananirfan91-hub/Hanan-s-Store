@@ -1,7 +1,8 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useProducts } from '../context/ProductContext';
 import { ProductCard } from '../components/ProductCard';
+import { AdBanner } from '../components/AdBanner';
 import { motion } from 'motion/react';
 import { Filter, SearchX } from 'lucide-react';
 
@@ -33,7 +34,7 @@ export const Categories = () => {
     }
 
     return result;
-  }, [selectedCategory, searchQuery]);
+  }, [selectedCategory, searchQuery, products]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -79,31 +80,44 @@ export const Categories = () => {
           </div>
         </div>
 
-        {loading ? (
-          <div className="flex justify-center py-24">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+        <div className="flex flex-col lg:flex-row gap-8">
+          {/* Sidebar Ads */}
+          <div className="w-full lg:w-1/4 shrink-0 order-2 lg:order-1">
+            <AdBanner />
+            <div className="mt-8">
+              <AdBanner />
+            </div>
           </div>
-        ) : (
-          <>
-            {/* Product Grid */}
-            <motion.div
-              layout
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-            >
-              {filteredProducts.map((product, index) => (
-                <ProductCard key={product.id} product={product} index={index} />
-              ))}
-            </motion.div>
 
-            {filteredProducts.length === 0 && (
-              <div className="text-center py-24 bg-white rounded-3xl border border-gray-100 mt-8">
-                <SearchX className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">No products found</h3>
-                <p className="text-gray-500">Try adjusting your search or category filter.</p>
+          {/* Main Content */}
+          <div className="flex-grow order-1 lg:order-2">
+            {loading ? (
+              <div className="flex justify-center py-24">
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
               </div>
+            ) : (
+              <>
+                {/* Product Grid */}
+                <motion.div
+                  layout
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"
+                >
+                  {filteredProducts.map((product, index) => (
+                    <ProductCard key={product.id} product={product} index={index} />
+                  ))}
+                </motion.div>
+
+                {filteredProducts.length === 0 && (
+                  <div className="text-center py-24 bg-white rounded-3xl border border-gray-100 mt-8">
+                    <SearchX className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">No products found</h3>
+                    <p className="text-gray-500">Try adjusting your search or category filter.</p>
+                  </div>
+                )}
+              </>
             )}
-          </>
-        )}
+          </div>
+        </div>
       </div>
     </div>
   );

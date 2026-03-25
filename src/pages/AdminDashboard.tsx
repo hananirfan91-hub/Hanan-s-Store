@@ -20,7 +20,7 @@ export const AdminDashboard = () => {
   const [uploading, setUploading] = useState(false);
   const [productToDelete, setProductToDelete] = useState<string | null>(null);
 
-  const categories = ['Electronics', 'Clothing', 'Home & Kitchen', 'Beauty', 'Sports', 'Toys', 'Accessories'];
+  const categories = ['Electronics', 'Clothing', 'Shoes', 'Watches', 'Home & Kitchen', 'Beauty', 'Sports', 'Toys', 'Accessories'];
 
   const [newProduct, setNewProduct] = useState<Partial<Product>>({
     name: '',
@@ -173,8 +173,17 @@ export const AdminDashboard = () => {
   };
 
   const seedProducts = async () => {
+    if (!window.confirm("This will delete all current products and replace them with the default general products. Are you sure?")) {
+      return;
+    }
     try {
       setLoading(true);
+      // Delete existing products
+      for (const p of products) {
+        await deleteDoc(doc(db, 'products', p.id));
+      }
+      
+      // Add default products
       for (const p of defaultProducts) {
         const { id, ...productData } = p;
         await addDoc(collection(db, 'products'), {
@@ -200,15 +209,13 @@ export const AdminDashboard = () => {
           <p className="text-gray-600 mt-2">Manage your store products</p>
         </div>
         <div className="flex gap-4">
-          {products.length === 0 && !loading && (
-            <button
-              onClick={seedProducts}
-              className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
-            >
-              <RefreshCw className="w-5 h-5" />
-              Seed Initial Products
-            </button>
-          )}
+          <button
+            onClick={seedProducts}
+            className="flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors text-sm"
+          >
+            <RefreshCw className="w-4 h-4" />
+            Reset to Default Products
+          </button>
           <button
             onClick={() => {
               if (isAdding) {

@@ -52,7 +52,7 @@ service cloud.firestore {
 
     function isAdmin() {
       return isAuthenticated() && (
-        request.auth.token.email == "hananirfan91@gmail.com" ||
+        request.auth.token.email == "abdulhananirfan62@gmail.com" ||
         (exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
          get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin')
       );
@@ -68,15 +68,11 @@ service cloud.firestore {
     function isValidProduct() {
       let data = request.resource.data;
       return data.keys().hasAll(['name', 'price', 'image', 'category', 'description']) &&
-             data.name is string && data.name.size() > 0 && data.name.size() < 100 &&
+             data.name is string && data.name.size() > 0 &&
              data.price is number && data.price >= 0 &&
-             data.image is string && data.image.size() > 0 && data.image.size() < 2000 &&
-             data.category is string && data.category.size() > 0 && data.category.size() < 50 &&
-             data.description is string && data.description.size() > 0 && data.description.size() < 2000 &&
-             (!('isSale' in data) || data.isSale is bool) &&
-             (!('salePrice' in data) || data.salePrice is number) &&
-             (!('isNewArrival' in data) || data.isNewArrival is bool) &&
-             (!('sizes' in data) || (data.sizes is list && data.sizes.size() < 50));
+             data.image is string && data.image.size() > 0 &&
+             data.category is string && data.category.size() > 0 &&
+             data.description is string && data.description.size() > 0;
     }
 
     function isValidReview() {

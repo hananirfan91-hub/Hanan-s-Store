@@ -6,6 +6,7 @@ import { motion } from 'motion/react';
 import { ShoppingCart, ArrowLeft, ShieldCheck, Truck, RotateCcw } from 'lucide-react';
 import { ProductCard } from '../components/ProductCard';
 import { ProductReviews } from '../components/ProductReviews';
+import { AdBanner } from '../components/AdBanner';
 
 export const ProductDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -56,48 +57,50 @@ export const ProductDetail = () => {
           <ArrowLeft className="w-5 h-5" /> Back
         </button>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
-          {/* Product Image */}
-          <motion.div 
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="relative aspect-square rounded-3xl overflow-hidden bg-gray-100"
-          >
-            <img 
-              src={product.image || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop'} 
-              alt={product.name} 
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop';
-              }}
-            />
-            <div className="absolute top-4 left-4 flex flex-col gap-2">
-              <span className="px-4 py-1.5 text-sm font-bold tracking-wider text-indigo-700 uppercase bg-indigo-50/90 backdrop-blur-sm rounded-full w-fit">
-                {product.category}
-              </span>
-              {product.isSale && (
-                <span className="px-4 py-1.5 text-sm font-bold tracking-wider text-red-700 uppercase bg-red-50/90 backdrop-blur-sm rounded-full w-fit">
-                  Sale
-                </span>
-              )}
-              {product.isNewArrival && (
-                <span className="px-4 py-1.5 text-sm font-bold tracking-wider text-green-700 uppercase bg-green-50/90 backdrop-blur-sm rounded-full w-fit">
-                  New Arrival
-                </span>
-              )}
-            </div>
-          </motion.div>
+        <div className="flex flex-col lg:flex-row gap-12 mb-24">
+          <div className="flex-grow">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+              {/* Product Image */}
+              <motion.div 
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="relative aspect-square rounded-3xl overflow-hidden bg-gray-100"
+              >
+                <img 
+                  src={product.image || 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop'} 
+                  alt={product.name} 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1000&auto=format&fit=crop';
+                  }}
+                />
+                <div className="absolute top-4 left-4 flex flex-col gap-2">
+                  <span className="px-4 py-1.5 text-sm font-bold tracking-wider text-indigo-700 uppercase bg-indigo-50/90 backdrop-blur-sm rounded-full w-fit">
+                    {product.category}
+                  </span>
+                  {product.isSale && (
+                    <span className="px-4 py-1.5 text-sm font-bold tracking-wider text-red-700 uppercase bg-red-50/90 backdrop-blur-sm rounded-full w-fit">
+                      Sale
+                    </span>
+                  )}
+                  {product.isNewArrival && (
+                    <span className="px-4 py-1.5 text-sm font-bold tracking-wider text-green-700 uppercase bg-green-50/90 backdrop-blur-sm rounded-full w-fit">
+                      New Arrival
+                    </span>
+                  )}
+                </div>
+              </motion.div>
 
-          {/* Product Info */}
-          <motion.div 
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex flex-col justify-center"
-          >
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
-              {product.name}
-            </h1>
+              {/* Product Info */}
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="flex flex-col justify-center"
+              >
+                <h1 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
+                  {product.name}
+                </h1>
             
             <div className="flex items-end gap-4 mb-6">
               <span className="text-4xl font-extrabold text-indigo-600">Rs. {displayPrice}</span>
@@ -166,22 +169,32 @@ export const ProductDetail = () => {
               Add to Cart
             </button>
           </motion.div>
-        </div>
+            </div>
 
-        {/* Product Reviews */}
-        <ProductReviews productId={product.id} />
+            {/* Product Reviews */}
+            <ProductReviews productId={product.id} />
 
-        {/* Related Products */}
-        {relatedProducts.length > 0 && (
-          <div className="border-t border-gray-100 pt-16 mt-16">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">You Might Also Like</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-              {relatedProducts.map((relatedProduct, index) => (
-                <ProductCard key={relatedProduct.id} product={relatedProduct} index={index} />
-              ))}
+            {/* Related Products */}
+            {relatedProducts.length > 0 && (
+              <div className="border-t border-gray-100 pt-16 mt-16">
+                <h2 className="text-3xl font-bold text-gray-900 mb-8">You Might Also Like</h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                  {relatedProducts.map((relatedProduct, index) => (
+                    <ProductCard key={relatedProduct.id} product={relatedProduct} index={index} />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Sidebar Ads */}
+          <div className="w-full lg:w-1/4 shrink-0">
+            <AdBanner />
+            <div className="mt-8">
+              <AdBanner />
             </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );

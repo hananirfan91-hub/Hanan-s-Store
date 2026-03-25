@@ -2,11 +2,14 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, CreditCard, Lock, ShieldCheck } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useProducts } from '../context/ProductContext';
 import { useLanguage } from '../context/LanguageContext';
 import { motion } from 'motion/react';
+import { AdBanner } from '../components/AdBanner';
 
 export const Checkout = () => {
-  const { items, totalPrice, clearCart } = useCart();
+  const { items, clearCart, totalPrice } = useCart();
+  const { products } = useProducts();
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -21,6 +24,16 @@ export const Checkout = () => {
     
     const orderDetails = items.map(item => `${item.name} (Qty: ${item.quantity}${item.selectedSize ? `, Size: ${item.selectedSize}` : ''})`).join(' | ');
     
+    // Calculate total safely using backend/verified product prices
+    let verifiedTotal = 0;
+    for (const item of items) {
+      const dbProduct = products.find(p => p.id === item.id);
+      if (dbProduct) {
+        const itemPrice = dbProduct.isSale && dbProduct.salePrice ? dbProduct.salePrice : dbProduct.price;
+        verifiedTotal += itemPrice * item.quantity;
+      }
+    }
+    
     const payload = {
       firstName: formData.get('firstName') as string || '',
       lastName: formData.get('lastName') as string || '',
@@ -29,7 +42,7 @@ export const Checkout = () => {
       city: formData.get('city') as string || '',
       zipCode: formData.get('postalCode') as string || '',
       productName: orderDetails,
-      totalAmount: totalPrice.toString()
+      totalAmount: verifiedTotal.toString()
     };
 
     console.log("Sending payload to Google Sheets:", payload);
@@ -40,7 +53,7 @@ export const Checkout = () => {
     });
 
     try {
-      await fetch('https://script.google.com/macros/s/AKfycbyq6ZjHty5MVQZlMdPImdIdJfkm-ozhbHuQZjY6XXl2mHjK1hVq9xW5nIKVuXLR19QI/exec', {
+      await fetch('https://script.google.com/macros/s/AKfycbwKLtbl4Dw8XtnkWoYSpKfInwJ5HnuWLTB15DZbg_JuEIwhsn89X8BjIE2wftSAcV28KQ/exec', {
         method: 'POST',
         body: formBody,
         mode: 'no-cors',
@@ -311,7 +324,7 @@ export const Checkout = () => {
                     <div className="flex-grow">
                       <h4 className="text-sm font-bold text-gray-900 line-clamp-1">{item.name}</h4>
                       <p className="text-xs text-gray-500">
-                        Qty: {item.quantity} {item.selectedSize && `| Size: UK ${item.selectedSize}`}
+                        Qty: {item.quantity} {item.selectedSize && `| Size: ${item.selectedSize}`}
                       </p>
                       <p className="text-sm font-bold text-indigo-600">Rs. {((item.isSale && item.salePrice ? item.salePrice : item.price) * item.quantity).toFixed(2)}</p>
                     </div>
@@ -339,6 +352,9 @@ export const Checkout = () => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className="mt-8">
+              <AdBanner />
             </div>
           </div>
         </div>

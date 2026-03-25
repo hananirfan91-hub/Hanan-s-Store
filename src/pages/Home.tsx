@@ -4,6 +4,7 @@ import { ArrowRight, Zap, ShieldCheck, Truck, ChevronUp, ChevronDown } from 'luc
 import { useProducts } from '../context/ProductContext';
 import { ProductCard } from '../components/ProductCard';
 import { ProductsByCategory } from '../components/ProductsByCategory';
+import { AdBanner } from '../components/AdBanner';
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from '../context/LanguageContext';
 
@@ -16,21 +17,21 @@ export const Home = () => {
   const heroSlides = [
     {
       id: 1,
-      image: "https://images.unsplash.com/photo-1556906781-9a412961c28c?w=1600&q=80",
+      image: "https://images.unsplash.com/photo-1523206489230-c012c64b2b48?w=1600&q=80",
       title: t('hero1Title'),
       highlight: t('hero1Highlight'),
       subtitle: t('hero1Sub'),
     },
     {
       id: 2,
-      image: "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=1600&q=80",
+      image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=1600&q=80",
       title: t('hero2Title'),
       highlight: t('hero2Highlight'),
       subtitle: t('hero2Sub'),
     },
     {
       id: 3,
-      image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1600&q=80",
+      image: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=1600&q=80",
       title: t('hero3Title'),
       highlight: t('hero3Highlight'),
       subtitle: t('hero3Sub'),
@@ -200,6 +201,33 @@ export const Home = () => {
         </div>
       </section>
 
+      {/* Featured Categories */}
+      <section className="py-24 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Shop by Categories</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">Explore our wide range of collections</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+            {[
+              { name: 'Clothes', image: 'https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400&q=80', link: '/categories?search=clothes' },
+              { name: 'Shirts', image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&q=80', link: '/categories?search=shirts' },
+              { name: 'Pants', image: 'https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=400&q=80', link: '/categories?search=pants' },
+              { name: 'Watches', image: 'https://images.unsplash.com/photo-1524592094714-0f0654e20314?w=400&q=80', link: '/categories?search=watches' },
+              { name: 'Airpods', image: 'https://images.unsplash.com/photo-1584865288642-42078afe6942?w=400&q=80', link: '/categories?search=airpods' },
+            ].map((cat, index) => (
+              <Link to={cat.link} key={index} className="group relative rounded-2xl overflow-hidden aspect-[4/5] block">
+                <img src={cat.image} alt={cat.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-center">
+                  <h3 className="text-white font-bold text-lg sm:text-xl tracking-wide">{cat.name}</h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Top Products Slider */}
       <section className="py-24 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
@@ -256,7 +284,14 @@ export const Home = () => {
             <p className="text-gray-500 max-w-2xl mx-auto">{t('shopByCategoryDesc')}</p>
           </div>
 
-          <ProductsByCategory />
+          <div className="flex flex-col lg:flex-row gap-8">
+            <div className="w-full lg:w-1/4 shrink-0 order-2 lg:order-1">
+              <AdBanner />
+            </div>
+            <div className="flex-grow order-1 lg:order-2">
+              <ProductsByCategory />
+            </div>
+          </div>
         </div>
       </section>
       

@@ -96,7 +96,7 @@ export const Header = () => {
               </svg>
             </div>
             <span className="font-bold text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 uppercase">
-              HANZOR
+              HANZOR STORE
             </span>
           </Link>
 

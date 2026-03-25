@@ -34,11 +34,11 @@ export const Footer = () => {
                 </svg>
               </div>
               <span className="font-bold text-2xl tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 via-yellow-400 to-yellow-600 uppercase">
-                HANZOR
+                HANZOR STORE
               </span>
             </Link>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Your ultimate destination for online shopping in Pakistan. We bring you the latest trends, electronics, and home essentials with exceptional quality and service.
+              Your ultimate destination for online shopping in Pakistan. We bring you the latest watches, shirts, jackets, shoes, electronics, and home essentials with exceptional quality and service.
             </p>
             <div className="flex gap-4 pt-2">
               <a href="https://facebook.com/HananIrfan001" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
@@ -125,7 +125,7 @@ export const Footer = () => {
 
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} HANZOR. All rights reserved.
+            &copy; {new Date().getFullYear()} HANZOR STORE. All rights reserved.
           </p>
           <div className="flex gap-4 text-sm text-gray-500">
             <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
